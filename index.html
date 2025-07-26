@@ -18,7 +18,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Inter', 'Segoe UI', sans-serif;
     }
 
     html, body {
@@ -36,10 +36,11 @@
     }
 
     header {
-      background: var(--fourth);
-      color: var(--text);
-      padding: 1.5rem;
+      background: linear-gradient(135deg, var(--fourth), var(--tertiary));
+      color: white;
+      padding: 2rem;
       text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     nav {
@@ -260,6 +261,124 @@
       transform-origin: left;
     }
 
+    .social-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 15px; /* Redondeado para el contenedor social */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    width: 100%; /* Ancho alargado del contenedor */
+    margin-top: 40px; /* Aumentar espacio entre el divisor y el contenedor social */
+    }
+
+    .social-icons {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra los enlaces socialmente */
+        gap: 20px; /* Aumentar espacio entre los enlaces */
+    }
+
+    .social-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #333;
+        padding: 15px 25px; /* Mayor padding para un diseño más alargado */
+        border-radius: 25px; /* Bordes redondeados para cada enlace */
+        background: var(--fourth); /* Fondo más claro */
+        transition: background 0.3s;
+        width: auto-fit; /* Asegura que el enlace ocupe todo el ancho */
+    }
+
+    .social-link:hover {
+        background: rgba(255, 255, 255, 0.2); /* Efecto hover */
+    }
+
+    .icon {
+        width: 60px;
+        margin-right: 15px;
+        transition: transform 0.3s;
+    }
+
+    .icon:hover {
+    transform: scale(1.1);
+    }
+
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 1.2rem;
+        }
+        .icon {
+            width: 40px; /* Tamaño más pequeño en móviles */
+        }
+    }
+
+    nav button {
+        background: var(--secondary);
+        border: 2px solid white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        margin: 0.3rem;
+        border-radius: 8px;
+      }
+
+      nav button.active {
+        background: var(--primary);
+        border: 2px solid white;
+      }
+
+      nav button {
+      background: transparent;
+      border: 2px solid transparent;
+      color: white;
+      padding: 1rem 1.5rem;
+      margin: 0.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    nav button.active, nav button:hover {
+      background: var(--primary);
+      border-color: white;
+    }
+
+    section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+    }
+
+    section.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .btn {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: var(--secondary);
+    }
+
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.9rem;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    }
+
   </style>
 </head>
 <body>
@@ -326,6 +445,10 @@
     </div>
 
   </div>
+  <div style="text-align: center; margin-top: 2rem;">
+  <button class="btn" onclick="document.querySelector('.tab[data-tab=contacto]').click()">Contáctenos</button>
+</div>
+
 </section>
 
 <!--Sección Quiénes somos-->
@@ -336,24 +459,44 @@
         <img src="assets/nosotros/lady.jpg" alt="Foto perfil">
         <h3>Lady Muñoz</h3>
         <p>Ingeniera de sistemas - Experta en desarrollo de software con 9 años de experiencia en Banca y proyectos de alto impacto, análisis predictivo y visualización de información estratégica.</p>
+        <br>
+        <p>Conoce más de Lady aquí:</p> 
+        <a href="https://www.linkedin.com/in/lady-margeth-mu%C3%B1oz-marquez-a81151201/" target="_blank">
+          <img src="assets/icons/linkedin.webp" alt="Linkedin" style="width:50px;">
+        </a>  
       </div>
 
       <div class="card card-hover">
         <img src="assets/nosotros/adriana.jpg" alt="Foto perfil">
         <h3>Adriana Rojas</h3>
         <p>Ingeniera de sistemas - Especialista en ingeniería de software - 5 años de experiencia en desarrollo frontend - backend, aplicaciones móviles, Banca y procesamiento de transacciones en línea con el manejo de arquitecturas escalables.</p>
+        <br>
+        <p>Conoce más de Adriana aquí:</p> 
+        <a href="https://www.linkedin.com/in/adriana-patricia-rojas-beltran-ab27a2195/" target="_blank">
+          <img src="assets/icons/linkedin.webp" alt="Linkedin" style="width:50px;">
+        </a>
       </div>
 
       <div class="card card-hover">
         <img src="assets/nosotros/hector.jpg" alt="Foto perfil">
         <h3>Hector Bohorquez</h3>
         <p>Ingeniero de datos Cloud - Experto en CLOUD, 10 años de experiencia en análisis de datos y visualización de información estratégica, desarrollo de software y automatización de procesos.</p>
+        <br>
+        <p>Conoce más de Hector aquí:</p> 
+        <a href="https://www.linkedin.com/in/hector-julian-bohorquez-benitez-401b8a159/" target="_blank">
+          <img src="assets/icons/linkedin.webp" alt="Linkedin" style="width:50px;">
+        </a>
       </div>
 
       <div class="card card-hover">
         <img src="assets/nosotros/santiago.jpg" alt="Foto perfil">
         <h3>Santiago Gómez</h3>
         <p>Ingeniero de sistemas - Especialista en gestión de sistemas de información gerencial - 4 años de experiencia en pagos en línea, desarrollo de software a la medida y automatización de procesos, análisis de información, análisis predictivo y visualización de información estratégica.</p>
+        <br>
+        <p>Conoce más de Santiago aquí:</p> 
+        <a href="https://www.linkedin.com/in/santiago-gomez-c/" target="_blank">
+          <img src="assets/icons/linkedin.webp" alt="Linkedin" style="width:50px;">
+        </a>
       </div>
     </div>
   </section>
@@ -507,7 +650,7 @@
 
       <div class="card card-hover">
         <div class="preview-web">
-          <iframe src="https://camerinojip.com/" loading="lazy"></iframe>
+          <iframe data-src="https://camerinojip.com/" class="lazy-frame"></iframe>
         </div>
         <h3>Ecommerce y Landing page</h3>
         <p>Landing page y Ecommerce funcional con pagos en línea a través de la pasarela Bold, notificaciones vía correo electrónico, así mismo notificaciones vía Whatsapp con cada intención de pago y compras confirmadas, diseño responsivo apto para cualquier dispositivo</p>
@@ -515,7 +658,7 @@
 
       <div class="card card-hover">
         <div class="preview-web">
-          <iframe src="https://sorteopc.netlify.app/" loading="lazy"></iframe>
+          <iframe src="https://sorteopc.netlify.app/" class="lazy-frame"></iframe>
         </div>
         <h3>Sistema de sorteos</h3>
         <p>Creación automatizada para gestión de rifas, con módulo de administración, animaciones y reserva interactiva, notificaciones vía correo electrónico, diseño responsivo apto para cualquier dispositivo</p>
@@ -523,42 +666,51 @@
 
       <div class="card card-hover">
         <div class="preview-web">
-          <iframe src="https://cuentacobrobetico.netlify.app/" loading="lazy"></iframe>
+          <iframe src="https://cuentacobrobetico.netlify.app/" class="lazy-frame"></iframe>
         </div>
         <h3>Sistema de generación de cuentas de cobro</h3>
-        <p>Sistema automático para la generación de cuentas de cobro en formato PDF, diseño responsivo e interactivo, descarga de cuentas de cobro en segundos con un formulario sencillo e intuitivo</p>
+        <p>Sistema automático para la generación de cuentas de cobro en formato PDF, diseño responsivo e interactivo, descarga de cuentas de cobro en segundos con un formulario sencillo e intuitivo.</p>
       </div>
 
       <div class="card card-hover">
         <div class="preview-web">
-          <iframe src="https://finanzaspareja.netlify.app/" loading="lazy"></iframe>
+          <iframe src="https://finanzaspareja.netlify.app/" class="lazy-frame"></iframe>
         </div>
         <h3>Sistema financiero para gestión de gastos</h3>
-        <p>Sistema de información para gestión de gastos en pareja, con notificaciones vía Whatsapp con gráficos interactivos para revisión de liquidaciones en tiempo real, filtros y animaciones, diseño responsivo apto para cualquier tipo de dispositivo</p>
+        <p>Sistema de información para gestión de gastos en pareja, con notificaciones vía Whatsapp con gráficos interactivos para revisión de liquidaciones en tiempo real, filtros y animaciones, diseño responsivo apto para cualquier tipo de dispositivo.</p>
       </div>
 
       <div class="card card-hover">
         <div class="preview-web">
-          <iframe src="https://onboarding20.netlify.app/" loading="lazy"></iframe>
+          <iframe src="https://recordatoriorifa.netlify.app/" class="lazy-frame"></iframe>
+        </div>
+        <h3>Sistema de envío de recordatorios vía Whatsapp</h3>
+        <p>Sistema de información para gestión de envío de mensajes automáticos a modo de recordatorio vía Whatsapp, adaptable a cualquier tipo de operación, diseño responsivo apto para cualquier dispositivo y pantalla.</p>
+      </div>
+
+
+      <div class="card card-hover">
+        <div class="preview-web">
+          <iframe src="https://onboarding20.netlify.app/" class="lazy-frame"></iframe>
         </div>
         <h3>Automatización de proceso en empresa global (Nuvei)</h3>
-        <p>El sistema de información permite realizar la generación de credenciales automatizando al menos 15 llamados a varios servicios de un API, con el objetivo de ahorrar tiempo en procesamiento manual, diseño responsivo se puede adaptar a cualquier tipo de dispositivo</p>
+        <p>El sistema de información permite realizar la generación de credenciales automatizando al menos 15 llamados a varios servicios de un API, con el objetivo de ahorrar tiempo en procesamiento manual, diseño responsivo se puede adaptar a cualquier tipo de dispositivo.</p>
       </div>
 
       <div class="card card-hover">
         <div class="preview-web">
-          <iframe src="https://paymentezapitest.netlify.app/" loading="lazy"></iframe>
+          <iframe src="https://paymentezapitest.netlify.app/" class="lazy-frame"></iframe>
         </div>
         <h3>Sistema de información visual de API - Paymentez (Nuvei)</h3>
-        <p>El sistema de información permite realizar llamados al API de Paymentez de una manera sencilla e interactiva con una interfaz cómoda, diseño responsivo apto para cualquier dispositivo, agilizando procesos de integración para nuevos comercios</p>
+        <p>El sistema de información permite realizar llamados al API de Paymentez de una manera sencilla e interactiva con una interfaz cómoda, diseño responsivo apto para cualquier dispositivo, agilizando procesos de integración para nuevos comercios.</p>
       </div>
 
       <div class="card card-hover">
         <div class="preview-web">
-          <iframe src="https://cloudysolutiontec.netlify.app/" loading="lazy"></iframe>
+          <iframe src="https://cloudysolutiontec.netlify.app/" class="lazy-frame"></iframe>
         </div>
         <h3>Sistema landing page de empresa</h3>
-        <p>El sistema de información es una landing page que permite la navegación entre diferentes pestañas, con animaciones, desarrollo responsivo apto para cualquier tipo de pantalla y dispositivo, barra de proyectos, quiénes somos y enlaces a redes sociales principales</p>
+        <p>El sistema de información es una landing page que permite la navegación entre diferentes pestañas, con animaciones, desarrollo responsivo apto para cualquier tipo de pantalla y dispositivo, barra de proyectos, quiénes somos y enlaces a redes sociales principales.</p>
       </div>
 
     </div>
@@ -567,30 +719,36 @@
 <!--Sección de Contáctenos-->
 <section id="contacto">
   <h2>Contáctenos</h2>
-    <p style="margin-bottom: 1rem;">
+    <p style="margin-bottom: 1.5rem;">
     Si deseas <strong>desarrollar software a la medida</strong>, <strong>automatizar procesos repetitivos</strong> en tu empresa, o <strong>analizar y visualizar tus datos</strong> de manera estratégica para tomar decisiones más inteligentes, estás en el lugar correcto.
   </p>
-  <p style="margin-bottom: 1rem;">
+  <p style="margin-bottom: 1.5rem;">
     En <strong>Cloudy Solutions SAS</strong> diseñamos e implementamos soluciones personalizadas para ayudarte a optimizar tus operaciones y maximizar tus resultados.
   </p>
-  <p style="margin-bottom: 1rem;">
+  <p style="margin-bottom: 1.5rem;">
     Escríbenos a: <strong>clody.admin@cloudysolutiontec.com</strong> o utiliza cualquiera de nuestros canales de contacto. ¡Estamos listos para ayudarte a llevar tu empresa al siguiente nivel!
   </p>
 
-  <div class="contacto-socials">
-  <a href="https://wa.me/573114433898" target="_blank">
-    <img src="assets/icons/whatsapp.png" alt="WhatsApp"> WhatsApp
-  </a>
-  <a href="https://facebook.com/cloudysolutions" target="_blank">
-    <img src="assets/icons/facebook.avif" alt="Facebook"> Facebook
-  </a>
-  <a href="https://instagram.com/cloudysolutions" target="_blank">
-    <img src="assets/icons/instagram.png" alt="Instagram"> Instagram
-  </a>
-  <a href="https://www.linkedin.com/company/cloudy-solutions-sas/" target="_blank">
-    <img src="assets/icons/linkedin.webp" alt="LinkedIn"> LinkedIn
-  </a>
-</div>
+        <div class="social-container">
+            <div class="social-icons">
+                <a href="https://wa.me/573114433898" target="_blank" class="social-link">
+                    <img src="assets/icons/whatsapp.png" alt="WhatsApp" class="icon">
+                    <span>Escríbenos a WhatsApp</span>
+                </a>
+                <a href="https://facebook.com/cloudysolutions" target="_blank" class="social-link">
+                    <img src="assets/icons/facebook.webp" alt="Facebook" class="icon">
+                    <span>Deja tu like en Facebook</span>
+                </a>
+                <a href="https://instagram.com/cloudysolutions" target="_blank" class="social-link">
+                    <img src="assets/icons/instagram.png" alt="Instagram" class="icon">
+                    <span>Síguenos en Instagram</span>
+                </a>
+                <a href="https://www.linkedin.com/company/cloudy-solutions-sas/" class="social-link">
+                    <img src="assets/icons/linkedin.webp" alt="Linkedin" class="icon">
+                    <span>Síguenos en LinkedIn</span>
+                </a>   
+            </div>
+        </div>
 
 </section>
 
@@ -615,6 +773,21 @@
 
     document.getElementById("anio").textContent = new Date().getFullYear();
   </script>
+
+  <script>
+  const proyectosBtn = document.querySelector('.tab[data-tab="proyectos"]');
+  const proyectosSection = document.getElementById("proyectos");
+
+  proyectosBtn.addEventListener("click", () => {
+    const lazyFrames = proyectosSection.querySelectorAll("iframe.lazy-frame");
+    lazyFrames.forEach(iframe => {
+      if (!iframe.src) {
+        iframe.src = iframe.dataset.src;
+      }
+    });
+  });
+</script>
+
   <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
 </body>
 </html>
