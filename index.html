@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="assets/icons/cloudy2.png" type="image/png">
+  <title>Cloudy Solutions SAS</title>
+  <style>
+    :root {
+      --primary: #343995;
+      --secondary: #2da3e9;
+      --tertiary: #82a6bf;
+      --fourth:#dbdcdc;
+      --text: #2d3340;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    main {
+      flex: 1;
+    }
+
+    body {
+      background: #f4f7fa;
+      color: #333;
+    }
+
+    header {
+      background: var(--fourth);
+      color: var(--text);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: var(--secondary);
+    }
+
+    nav button {
+      padding: 1rem;
+      flex: 1 1 200px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    nav button.active {
+      background: var(--primary);
+    }
+
+    section {
+      display: none;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      height: 200px;
+    }
+
+    .service-item, .phase-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .service-item h4, .phase-item h4 {
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+
+    .socials a {
+      margin: 0 0.8rem;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 600px) {
+      nav button {
+        flex: 1 1 100%;
+      }
+    }
+
+    .contacto-socials {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .contacto-socials a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 500;
+      color: #000;
+      background: #fff;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .contacto-socials a:hover {
+      transform: scale(1.02);
+    }
+
+    .contacto-socials img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    .animacion {
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto 1rem;
+      display: block;
+    }
+
+    .preview-web {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px #ccc;
+      margin-bottom: 1rem;
+      height: 320px; /* aumenta altura visible */
+    }
+
+    .preview-web iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      transform: scale(1.05); /* opcional: zoom leve */
+      transform-origin: top left;
+    }
+
+    #proyectos .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    #proyectos .card {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    nav button {
+      padding: 1rem;
+      flex: 1 1 200px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      position: relative;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    nav button:hover {
+      transform: translateY(-2px);
+    }
+
+    nav button::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 100%;
+      background: white;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    nav button:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+  </style>
+</head>
+<body>
+
+<header style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-direction: column;">
+  <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+    <img src="assets/icons/cloudy2.png" alt="Logo Cloudy" style="height: 50px;">
+    <h1 style="margin: 0;">Cloudy Solutions SAS</h1>
+  </div>
+  <p>Soluciones tecnológicas adaptadas a tu empresa</p>
+</header>
+
+
+  <nav>
+    <button class="tab active" data-tab="inicio">Inicio</button>
+    <button class="tab" data-tab="ofrecemos">Qué ofrecemos</button>
+    <button class="tab" data-tab="quienes">Quiénes somos</button>
+    <button class="tab" data-tab="proyectos">Proyectos</button>
+    <button class="tab" data-tab="contacto">Contáctenos</button>
+  </nav>
+
+<main>
+  <section id="inicio" class="active">
+
+  <h2 style="text-align:center; margin-bottom: 2rem;">¿Qué hacemos?</h2>
+  <div class="card-grid">
+    <div class="card card-hover">
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+    <dotlottie-wc src="https://lottie.host/f23c9716-8cd6-4302-83c4-b95de21f5f5a/RGjJJb2oyp.lottie" style="width: 300px;height: 300px" speed="1" autoplay loop></dotlottie-wc>
+      <h3>Software a la medida</h3>
+      <p>Desarrollamos soluciones adaptadas 100% a tu negocio, sin depender de herramientas genéricas.</p>
+    </div>
+    <div class="card card-hover">
+   <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+    <dotlottie-wc src="https://lottie.host/3c70b84a-2196-4bb4-92d6-22f440678d90/jmBx3hFBFW.lottie" style="width: 300px;height: 300px" speed="1" autoplay loop></dotlottie-wc>
+      <h3>Análisis de datos</h3>
+      <p>Convertimos tus datos en decisiones con dashboards, predicción y visualización interactiva.</p>
+    </div>
+    <div class="card card-hover">
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+    <dotlottie-wc src="https://lottie.host/496b667e-0a1c-4802-aecc-42c53ca16774/0I85NBxoVU.lottie" style="width: 300px;height: 300px" speed="1" autoplay loop></dotlottie-wc>
+      <h3>Automatización de procesos</h3>
+      <p>Reducimos tareas repetitivas con bots, flujos automatizados y sistemas integrados.</p>
+    </div>
+  </div>
+</section>
+
+
+  <section id="quienes">
+    <h2>Quiénes somos</h2>
+    <div class="card-grid">
+     <div class="card card-hover">
+        <img src="assets/nosotros/lady.jpg" alt="Foto perfil">
+        <h3>Lady Muñoz</h3>
+        <p>Ingeniera de sistemas - Experta en desarrollo de software con 9 años de experiencia en Banca y proyectos de alto impacto, análisis predictivo y visualización de información estratégica.</p>
+      </div>
+
+      <div class="card card-hover">
+        <img src="assets/nosotros/adriana.jpg" alt="Foto perfil">
+        <h3>Adriana Rojas</h3>
+        <p>Ingeniera de sistemas - Especialista en ingeniería de software - 5 años de experiencia en desarrollo frontend - backend, aplicaciones móviles, Banca y procesamiento de transacciones en línea con el manejo de arquitecturas escalables.</p>
+      </div>
+
+      <div class="card card-hover">
+        <img src="assets/nosotros/hector.jpg" alt="Foto perfil">
+        <h3>Hector Julián Bohorquez</h3>
+        <p>Ingeniero de datos Cloud - Experto en CLOUD, 10 años de experiencia en análisis de datos y visualización de información estratégica, desarrollo de software y automatización de procesos.</p>
+      </div>
+
+      <div class="card card-hover">
+        <img src="assets/nosotros/santiago.jpg" alt="Foto perfil">
+        <h3>Santiago Gómez Caicedo</h3>
+        <p>Ingeniero de sistemas - Especialista en gestión de sistemas de información gerencial - 4 años de experiencia en pagos en línea, desarrollo de software a la medida y automatización de procesos, análisis de información, análisis predictivo y visualización de información estratégica.</p>
+      </div>
+    </div>
+  </section>
+
+<section id="ofrecemos">
+  <h2>Qué ofrecemos</h2>
+<div class="card-grid">
+<div class="card card-hover">
+  <dotlottie-wc
+    src="https://lottie.host/daa97a83-2357-4f81-9af2-6f51d1974ffd/Sfzq5ovzlO.lottie"
+    class="animacion"
+    speed="1"
+    autoplay
+    loop>
+  </dotlottie-wc>
+  <h4>Software a la medida</h4>
+  <p>Soluciones personalizadas adaptadas a la necesidad del cliente y su modelo de negocio.</p>
+</div>
+
+  <div class="card card-hover">
+      <dotlottie-wc
+    src="https://lottie.host/e530cfed-70f9-4564-876e-961a97b02e5d/Z6UtzuilK3.lottie"
+    class="animacion"
+    speed="1"
+    autoplay
+    loop>
+  </dotlottie-wc>
+    <h4>Reportes</h4>
+    <p>Dashboards y reportes automatizados para la toma de decisiones.</p>
+  </div>
+
+  <div class="card card-hover">
+    <dotlottie-wc
+    src="https://lottie.host/5cec3954-60a5-4ea8-a576-b5b4f1c04ce3/QYKP9RXsNo.lottie"
+    class="animacion"
+    speed="1"
+    autoplay
+    loop>
+  </dotlottie-wc>
+    <h4>Manejo de información</h4>
+    <p>Organización, almacenamiento y procesamiento eficiente de datos empresariales.</p>
+  </div>
+
+  <div class="card card-hover">
+    <dotlottie-wc
+    src="https://lottie.host/ab944a92-b7a0-4894-b5db-b990d587d887/r2glyFJyJR.lottie"
+    class="animacion"
+    speed="1"
+    autoplay
+    loop>
+  </dotlottie-wc>
+    <h4>Documentación</h4>
+    <p>Documentación técnica y funcional clara para cada proyecto o solución entregada.</p>
+  </div>
+</div>
+
+<h3 style="margin-top:2rem;">Nuestras fases de trabajo</h3>
+<div class="card-grid">
+  <div class="card card-hover">
+    <dotlottie-wc
+    src="https://lottie.host/369ed609-0d38-4db6-af00-953ed81b7f1d/OVYSuKBlKi.lottie"
+    class="animacion"
+    speed="1"
+    autoplay
+    loop>
+  </dotlottie-wc>
+    <h4>1. Análisis de la información</h4>
+    <p>Revisión profunda de la información actual, requerimientos y oportunidades de mejora.</p>
+  </div>
+
+  <div class="card card-hover">
+    <dotlottie-wc
+    src="https://lottie.host/40193303-141a-44a7-8f7b-c84a8e1fb2ce/XIahhEPJ9R.lottie"
+    class="animacion"
+    speed="1"
+    autoplay
+    loop>
+  </dotlottie-wc>
+    <h4>2. Ingeniería de datos</h4>
+    <p>Diseño de flujos y estructuras optimizadas para almacenar y mover la información.</p>
+  </div>
+
+  <div class="card card-hover">
+     <dotlottie-wc
+    src="https://lottie.host/f87af97a-3e5d-4acf-acff-f9ed9dc35835/IMZ0V6wiWb.lottie"
+    class="animacion"
+    speed="1"
+    autoplay
+    loop>
+  </dotlottie-wc>
+    <h4>3. Arquitectura de datos</h4>
+    <p>Definición de modelos y herramientas para una solución escalable y eficiente.</p>
+  </div>
+
+  <div class="card card-hover">
+       <dotlottie-wc
+    src="https://lottie.host/392aa018-bb52-4d75-8fae-b287dbc550c3/f4wVSIdHWZ.lottie"
+    class="animacion"
+    speed="1"
+    autoplay
+    loop>
+  </dotlottie-wc>
+    <h4>4. Integración de la información</h4>
+    <p>Unificación de fuentes de datos dispares en una sola vista centralizada.</p>
+  </div>
+
+  <div class="card card-hover">
+  <dotlottie-wc
+    src="https://lottie.host/5acc1e8c-dc7c-4cff-b6f0-d1b085afa4c8/0gMvsSsybO.lottie"
+    class="animacion"
+    speed="1"
+    autoplay
+    loop>
+  </dotlottie-wc>
+    <h4>5. Transformación de la información</h4>
+    <p>Limpieza, estandarización y modelado de los datos.</p>
+  </div>
+
+  <div class="card card-hover">
+  <dotlottie-wc
+    src="https://lottie.host/29714598-390e-4e0a-800f-fc4f4e85aba7/vELHW6S2uG.lottie"
+    class="animacion"
+    speed="1"
+    autoplay
+    loop>
+  </dotlottie-wc>
+    <h4>6. Segmentación de la información</h4>
+    <p>Clasificación y agrupación de datos clave según objetivos estratégicos.</p>
+  </div>
+
+  <div class="card card-hover">
+     <dotlottie-wc
+    src="https://lottie.host/28a4f285-2817-420b-a56d-684e23ce6a17/8oicZ7LDeJ.lottie"
+    class="animacion"
+    speed="1"
+    autoplay
+    loop>
+  </dotlottie-wc>
+    <h4>7. Automatización de procesos</h4>
+    <p>Implementación de scripts y herramientas que reducen intervención humana.</p>
+  </div>
+</div>
+
+</section>
+
+  <section id="proyectos">
+    <h2>Proyectos realizados</h2>
+    <div class="card-grid">
+
+      <div class="card card-hover">
+        <div class="preview-web">
+          <iframe src="https://camerinojip.com/" loading="lazy"></iframe>
+        </div>
+        <h3>Ecommerce y Landing page</h3>
+        <p>Landing page y Ecommerce funcional con pagos en línea a través de la pasarela Bold, notificaciones vía correo electrónico, así mismo notificaciones vía Whatsapp con cada intención de pago y compras confirmadas, diseño responsivo apto para cualquier dispositivo</p>
+      </div>
+
+      <div class="card card-hover">
+        <div class="preview-web">
+          <iframe src="https://sorteopc.netlify.app/" loading="lazy"></iframe>
+        </div>
+        <h3>Sistema de sorteos</h3>
+        <p>Creación automatizada para gestión de rifas, con módulo de administración, animaciones y reserva interactiva, notificaciones vía correo electrónico, diseño responsivo apto para cualquier dispositivo</p>
+      </div>
+
+      <div class="card card-hover">
+        <div class="preview-web">
+          <iframe src="https://cuentacobrobetico.netlify.app/" loading="lazy"></iframe>
+        </div>
+        <h3>Sistema de generación de cuentas de cobro</h3>
+        <p>Sistema automático para la generación de cuentas de cobro en formato PDF, diseño responsivo e interactivo, descarga de cuentas de cobro en segundos con un formulario sencillo e intuitivo</p>
+      </div>
+
+      <div class="card card-hover">
+        <div class="preview-web">
+          <iframe src="https://finanzaspareja.netlify.app/" loading="lazy"></iframe>
+        </div>
+        <h3>Sistema financiero para gestión de gastos</h3>
+        <p>Sistema de información para gestión de gastos en pareja, con notificaciones vía Whatsapp con gráficos interactivos para revisión de liquidaciones en tiempo real, filtros y animaciones, diseño responsivo apto para cualquier tipo de dispositivo</p>
+      </div>
+
+      <div class="card card-hover">
+        <div class="preview-web">
+          <iframe src="https://onboarding20.netlify.app/" loading="lazy"></iframe>
+        </div>
+        <h3>Automatización de proceso en empresa global (Nuvei)</h3>
+        <p>El sistema de información permite realizar la generación de credenciales automatizando al menos 15 llamados a varios servicios de un API, con el objetivo de ahorrar tiempo en procesamiento manual, diseño responsivo se puede adaptar a cualquier tipo de dispositivo</p>
+      </div>
+
+      <div class="card card-hover">
+        <div class="preview-web">
+          <iframe src="https://paymentezapitest.netlify.app/" loading="lazy"></iframe>
+        </div>
+        <h3>Sistema de información visual de API - Paymentez (Nuvei)</h3>
+        <p>El sistema de información permite realizar llamados al API de Paymentez de una manera sencilla e interactiva con una interfaz cómoda, diseño responsivo apto para cualquier dispositivo, agilizando procesos de integración para nuevos comercios</p>
+      </div>
+
+      
+
+    </div>
+  </section>
+
+<section id="contacto">
+  <h2>Contáctenos</h2>
+  <p style="margin-bottom: 1rem;">Escríbenos a: <strong>clody.admin@cloudysolutiontec.com</strong></p>
+  <div class="contacto-socials">
+  <a href="https://wa.me/573114433898" target="_blank">
+    <img src="assets/icons/whatsapp.png" alt="WhatsApp"> WhatsApp
+  </a>
+  <a href="https://facebook.com/cloudysolutions" target="_blank">
+    <img src="assets/icons/facebook.avif" alt="Facebook"> Facebook
+  </a>
+  <a href="https://instagram.com/cloudysolutions" target="_blank">
+    <img src="assets/icons/instagram.png" alt="Instagram"> Instagram
+  </a>
+  <a href="https://www.linkedin.com/company/cloudy-solutions-sas/" target="_blank">
+    <img src="assets/icons/linkedin.webp" alt="LinkedIn"> LinkedIn
+  </a>
+</div>
+
+</section>
+
+</main>
+  <footer>
+    &copy; <span id="anio"></span> Cloudy Solutions SAS. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const sections = document.querySelectorAll("section");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        sections.forEach(s => s.classList.remove("active"));
+
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.tab).classList.add("active");
+      });
+    });
+
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
