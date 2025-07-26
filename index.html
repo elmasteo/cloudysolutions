@@ -273,7 +273,7 @@
   <p>Soluciones tecnológicas adaptadas a tu empresa</p>
 </header>
 
-
+<!--Navbar con tabs disponibles-->
   <nav>
     <button class="tab active" data-tab="inicio">Inicio</button>
     <button class="tab" data-tab="ofrecemos">Qué ofrecemos</button>
@@ -283,32 +283,53 @@
   </nav>
 
 <main>
+
+  <!--Sección de inicio qué hacemos?-->
   <section id="inicio" class="active">
 
   <h2 style="text-align:center; margin-bottom: 2rem;">¿Qué hacemos?</h2>
   <div class="card-grid">
+
     <div class="card card-hover">
-    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
-    <dotlottie-wc src="https://lottie.host/f23c9716-8cd6-4302-83c4-b95de21f5f5a/RGjJJb2oyp.lottie" style="width: 300px;height: 300px" speed="1" autoplay loop></dotlottie-wc>
+    <dotlottie-wc
+    src="https://lottie.host/f23c9716-8cd6-4302-83c4-b95de21f5f5a/RGjJJb2oyp.lottie"
+    class="animacion"
+    speed="1"
+    autoplay
+    loop>
+    </dotlottie-wc>
       <h3>Software a la medida</h3>
       <p>Desarrollamos soluciones adaptadas 100% a tu negocio, sin depender de herramientas genéricas.</p>
     </div>
+
     <div class="card card-hover">
-   <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
-    <dotlottie-wc src="https://lottie.host/3c70b84a-2196-4bb4-92d6-22f440678d90/jmBx3hFBFW.lottie" style="width: 300px;height: 300px" speed="1" autoplay loop></dotlottie-wc>
+      <dotlottie-wc
+    src="https://lottie.host/3c70b84a-2196-4bb4-92d6-22f440678d90/jmBx3hFBFW.lottie"
+    class="animacion"
+    speed="1"
+    autoplay
+    loop>
+    </dotlottie-wc>
       <h3>Análisis de datos</h3>
       <p>Convertimos tus datos en decisiones con dashboards, predicción y visualización interactiva.</p>
     </div>
+
     <div class="card card-hover">
-    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
-    <dotlottie-wc src="https://lottie.host/496b667e-0a1c-4802-aecc-42c53ca16774/0I85NBxoVU.lottie" style="width: 300px;height: 300px" speed="1" autoplay loop></dotlottie-wc>
+    <dotlottie-wc
+    src="https://lottie.host/496b667e-0a1c-4802-aecc-42c53ca16774/0I85NBxoVU.lottie"
+    class="animacion"
+    speed="1"
+    autoplay
+    loop>
+    </dotlottie-wc>
       <h3>Automatización de procesos</h3>
       <p>Reducimos tareas repetitivas con bots, flujos automatizados y sistemas integrados.</p>
     </div>
+
   </div>
 </section>
 
-
+<!--Sección Quiénes somos-->
   <section id="quienes">
     <h2>Quiénes somos</h2>
     <div class="card-grid">
@@ -338,6 +359,7 @@
     </div>
   </section>
 
+<!--Sección qué ofrecemos y etapas-->
 <section id="ofrecemos">
   <h2>Qué ofrecemos</h2>
 <div class="card-grid">
@@ -479,6 +501,7 @@
 
 </section>
 
+<!--Sección de proyectos realizados iFrames-->
   <section id="proyectos">
     <h2>Proyectos realizados</h2>
     <div class="card-grid">
@@ -534,6 +557,7 @@
     </div>
   </section>
 
+<!--Sección de Contáctenos-->
 <section id="contacto">
   <h2>Contáctenos</h2>
     <p style="margin-bottom: 1rem;">
@@ -584,5 +608,6 @@
 
     document.getElementById("anio").textContent = new Date().getFullYear();
   </script>
+  <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
 </body>
 </html>
