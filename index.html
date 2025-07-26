@@ -122,6 +122,16 @@
     @media (max-width: 600px) {
       nav button {
         flex: 1 1 100%;
+        background: var(--secondary);
+        border: 2px solid white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        margin: 0.3rem;
+        border-radius: 8px;
+      }
+
+      nav button.active {
+        background: var(--primary);
+        border: 2px solid white;
       }
     }
 
@@ -188,16 +198,17 @@
       transform: scale(1.05); /* opcional: zoom leve */
       transform-origin: top left;
     }
-
+    /*
     #proyectos .card-grid {
       display: flex;
       flex-direction: column;
       gap: 2rem;
     }
-
+    */
     #proyectos .card {
-      max-width: 1000px;
-      margin: 0 auto;
+      max-width: 100%;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     nav button {
@@ -504,14 +515,21 @@
         <p>El sistema de información permite realizar llamados al API de Paymentez de una manera sencilla e interactiva con una interfaz cómoda, diseño responsivo apto para cualquier dispositivo, agilizando procesos de integración para nuevos comercios</p>
       </div>
 
-      
-
     </div>
   </section>
 
 <section id="contacto">
   <h2>Contáctenos</h2>
-  <p style="margin-bottom: 1rem;">Escríbenos a: <strong>clody.admin@cloudysolutiontec.com</strong></p>
+    <p style="margin-bottom: 1rem;">
+    Si deseas <strong>desarrollar software a la medida</strong>, <strong>automatizar procesos repetitivos</strong> en tu empresa, o <strong>analizar y visualizar tus datos</strong> de manera estratégica para tomar decisiones más inteligentes, estás en el lugar correcto.
+  </p>
+  <p style="margin-bottom: 1rem;">
+    En <strong>Cloudy Solutions SAS</strong> diseñamos e implementamos soluciones personalizadas para ayudarte a optimizar tus operaciones y maximizar tus resultados.
+  </p>
+  <p style="margin-bottom: 1rem;">
+    Escríbenos a: <strong>clody.admin@cloudysolutiontec.com</strong> o utiliza cualquiera de nuestros canales de contacto. ¡Estamos listos para ayudarte a llevar tu empresa al siguiente nivel!
+  </p>
+
   <div class="contacto-socials">
   <a href="https://wa.me/573114433898" target="_blank">
     <img src="assets/icons/whatsapp.png" alt="WhatsApp"> WhatsApp
