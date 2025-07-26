@@ -94,6 +94,22 @@
       object-fit: cover;
       height: 200px;
     }
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      aspect-ratio: 3 / 4; /* Relación recomendada para retratos */
+      height: auto; /* Elimina altura fija */
+      max-height: 300px;
+    }
+
+    @media (max-width: 600px) {
+      .card img {
+        aspect-ratio: 1 / 1; /* O ajusta a 3/4 si prefieres */
+        max-height: 250px;
+        object-position: top center; /* Enfoca la parte superior del rostro */
+      }
+    }
 
     .service-item, .phase-item {
       margin-bottom: 1.5rem;
