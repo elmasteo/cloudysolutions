@@ -12,6 +12,8 @@
       --tertiary: #82a6bf;
       --fourth:#dbdcdc;
       --text: #2d3340;
+      --fifth: #2ca4e4;
+      --six:#7babd3;
     }
 
     * {
@@ -47,7 +49,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      background: var(--secondary);
+      background: var(--fifth);
     }
 
     nav button {
@@ -58,6 +60,7 @@
       color: white;
       cursor: pointer;
       font-weight: bold;
+      background: var(--six);
     }
 
     nav button.active {
@@ -288,7 +291,7 @@
         border-radius: 25px; /* Bordes redondeados para cada enlace */
         background: var(--fourth); /* Fondo más claro */
         transition: background 0.3s;
-        width: auto-fit; /* Asegura que el enlace ocupe todo el ancho */
+        width: 100%; /* Asegura que el enlace ocupe todo el ancho */
     }
 
     .social-link:hover {
@@ -398,6 +401,79 @@
       transform: translateY(-2px);
     }
 
+    body.dark-mode {
+      background: #121212;
+      color: #e0e0e0;
+    }
+
+    body.dark-mode header {
+      background: linear-gradient(135deg, #2d2d2d, #1e1e1e);
+      color: #fff;
+    }
+
+    body.dark-mode nav {
+      background: #1a1a1a;
+    }
+
+    body.dark-mode nav button {
+      color: #fff;
+      background: #333;
+      border-color: #555;
+    }
+
+    body.dark-mode nav button.active,
+    body.dark-mode nav button:hover {
+      background: var(--primary);
+    }
+
+    body.dark-mode .card {
+      background: #1e1e1e;
+      color: #e0e0e0;
+      box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
+    }
+
+    body.dark-mode .social-link {
+      background: #2c2c2c;
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .social-link:hover {
+      background: #3a3a3a;
+    }
+
+    body.dark-mode footer {
+      background: #1a1a1a;
+      color: #ccc;
+    }
+
+    .social-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .social-icons {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%; /* Para que ocupe todo el ancho del contenedor */
+      max-width: 500px; /* Opcional: define un ancho máximo para mantener estética */
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center; /* CENTRA TODO horizontalmente */
+      gap: 12px; /* Espacio entre ícono y texto */
+      width: 100%;
+      padding: 15px 25px;
+      background: var(--fourth);
+      border-radius: 25px;
+      color: #333;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    
   </style>
 </head>
 <body>
@@ -408,6 +484,7 @@
     <h1 style="margin: 0;">Cloudy Solutions SAS</h1>
   </div>
   <p>Soluciones tecnológicas adaptadas a tu empresa</p>
+  <button id="darkModeToggle" class="btn" style="position: absolute; top: 1rem; right: 1rem; z-index: 10;">🌙</button>
 </header>
 
 <!--Navbar con tabs disponibles-->
@@ -808,6 +885,23 @@
         iframe.src = iframe.dataset.src;
       }
     });
+  });
+</script>
+
+<script>
+  const darkToggle = document.getElementById("darkModeToggle");
+
+  // Persistencia en localStorage
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+    darkToggle.textContent = "☀️";
+  }
+
+  darkToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    const isDark = document.body.classList.contains("dark-mode");
+    darkToggle.textContent = isDark ? "☀️" : "🌙";
+    localStorage.setItem("theme", isDark ? "dark" : "light");
   });
 </script>
 
